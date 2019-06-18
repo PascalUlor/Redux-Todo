@@ -11,8 +11,10 @@ switch(action.type) {
         return [...state, action.payload];
     case types.TOGGLE:
             return state.map(todo => {
-                if (todo.id === action.payload) {
+                if (todo.id === action.payload && todo.completed === false) {
                   return { ...todo, completed: true };
+                } else if(todo.id === action.payload && todo.completed === true) {
+                    return { ...todo, completed: false };
                 }
                 return todo;
               });

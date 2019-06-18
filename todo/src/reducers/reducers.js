@@ -1,6 +1,6 @@
 import * as types from '../actions/actinoTypes';
 
-export const todoReducer = (state= [{values:'wakeup', completed: false}], action)=>{
+export const todoReducer = (state= [], action)=>{
 switch(action.type) {
     case types.ADD_TODO:
         return [...state, action.payload];

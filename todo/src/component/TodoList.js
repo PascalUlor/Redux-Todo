@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { addTODO } from '../actions/actionCreators';
+import { addTODO, toggleTodo, deleteTodo} from '../actions/actionCreators';
+import Todo from './Todo';
 
 const Container = styled.div`
 margin: 0 auto;
@@ -28,6 +29,14 @@ class TodoList extends React.Component{
         this.setState({ newTodo: '' })
     }
 
+    completed = (id) =>{
+        this.props.toggleTodo(id)
+    }
+
+    deleteItem= (id) =>{
+        this.props.deleteTodo(id)
+    }
+
     handleChanges = e => this.setState({ newTodo: e.target.value });
 
 
@@ -37,9 +46,12 @@ class TodoList extends React.Component{
       <Container>
       <Header>Todo List</Header>
         {this.props.todos.map(todo=>{
-          return <div>
-          <p>{todo.values}</p>
-          <p>{todo.completed}</p>
+          return <div key={todo.id}>
+          <Todo 
+              item={todo}
+              select={this.completed}
+              deleteItem={this.deleteItem}
+          />
           </div>
         })}
         <form onSubmit={this.addTODO}>
@@ -63,5 +75,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { addTODO }
+  { addTODO, toggleTodo, deleteTodo }
 )(TodoList);

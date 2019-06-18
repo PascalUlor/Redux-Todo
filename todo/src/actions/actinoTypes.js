@@ -1,2 +1,3 @@
 export const ADD_TODO = 'ADD_TODO';
-export const MARK_DONE = 'MARK_DONE';
+export const TOGGLE = 'TOGGLE';
+export const DELETE_TODO = 'DELETE_TODO';

@@ -1,5 +1,5 @@
 import uuid from 'uuid';
-import { ADD_TODO, MARK_DONE } from './actinoTypes';
+import { ADD_TODO, TOGGLE, DELETE_TODO } from './actinoTypes';
 
 export const addTODO = todo =>{
     console.log(todo)
@@ -13,10 +13,18 @@ export const addTODO = todo =>{
     }
 }
 
-export const markDONE = id =>{
+export const toggleTodo = id =>{
     console.log(id)
     return {// action
-        type: MARK_DONE,
+        type: TOGGLE,
+        payload: id
+    }
+}
+
+export const deleteTodo = id => {
+    console.log(id)
+    return {
+        type: DELETE_TODO,
         payload: id
     }
 }

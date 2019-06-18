@@ -1,6 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { addTODO } from '../actions/actionCreators';
+
+const Container = styled.div`
+margin: 0 auto;
+`;
+
+const Header = styled.div`
+@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
+  font-family: "Lobster", cursive;
+  font-size: 2rem;
+  font-weight: lighter;
+  padding: 0 0 0 1rem;
+  margin: 0 0 3rem 0;
+`;
 
 class TodoList extends React.Component{
 
@@ -20,8 +34,8 @@ class TodoList extends React.Component{
   render() {
     console.log('=====',this.props)
     return (
-      <div className="App">
-      <h1>Todo List</h1>
+      <Container>
+      <Header>Todo List</Header>
         {this.props.todos.map(todo=>{
           return <div>
           <p>{todo.values}</p>
@@ -35,7 +49,7 @@ class TodoList extends React.Component{
               />
               <button>Add Todo</button>
         </form>
-      </div>
+      </Container>
     );
   }
   

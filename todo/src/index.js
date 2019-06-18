@@ -3,16 +3,21 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { todoReducer } from './reducers/reducers';
+import { loadState, saveState } from './storage/storage';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-
+const persistedState = loadState();
 
 const combinedReducer = combineReducers({
     todos: todoReducer,
 });
 
-const store = createStore(combinedReducer);
+const store = createStore(combinedReducer, persistedState);
+
+store.subscribe(()=>{
+    saveState(store.getState());
+});
 
 
 ReactDOM.render(

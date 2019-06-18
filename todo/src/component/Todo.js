@@ -12,10 +12,12 @@ background-color: skyblue;
 `;
 
 
+
 const Todo = ({ item, select, deleteItem }) => {
     const validation = item.completed ? { textDecoration: 'line-through' } : { fontWeight: 'bold' }
     return (
         <Container>
+    
 <p className="todo__text" onClick={() => select(item.id)} style={validation} key={item.id}>
             {item.values}
             {item.completed}

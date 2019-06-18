@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { addTODO, toggleTodo, deleteTodo} from '../actions/actionCreators';
 import Todo from './Todo';
+import Form from './Forrm';
 
 const Container = styled.div`
 margin: 0 auto;
@@ -45,6 +46,12 @@ class TodoList extends React.Component{
     return (
       <Container>
       <Header>Todo List</Header>
+      <Form 
+          addTODO={this.addTODO}
+          handleChanges={this.handleChanges}
+          todoInput={this.state.newTodo}
+
+      />
         {this.props.todos.map(todo=>{
           return <div key={todo.id}>
           <Todo 
@@ -54,13 +61,6 @@ class TodoList extends React.Component{
           />
           </div>
         })}
-        <form onSubmit={this.addTODO}>
-        <input 
-              onChange={this.handleChanges}
-              value={this.state.newTodo}
-              />
-              <button>Add Todo</button>
-        </form>
       </Container>
     );
   }

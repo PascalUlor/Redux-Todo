@@ -3,13 +3,14 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
 text-align: center;
 margin: 1rem auto;
 width: 30%;
 height: 3rem;
 background-color: skyblue;
+padding: .5rem;
 `;
 
 const Slide = styled.span`
@@ -60,7 +61,7 @@ const Todo = ({ item, select, deleteItem }) => {
     return (
         <Container>
     <Slide onClick={() => select(item.id)}>  
-    <input type="checkbox" id={item.values} /><label for={item.values}>{item.values}</label>
+    <input type="checkbox" id={item.values} /><label htmlFor={item.values}>{item.values}</label>
     </Slide>
         <p className="todo__text" key={item.id}>
             {item.values}

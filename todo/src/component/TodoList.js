@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { addTODO, toggleTodo, deleteTodo} from '../actions/actionCreators';
 import Todo from './Todo';
-import Form from './Forrm';
+import Form from './Form';
 
 const Container = styled.div`
 margin: 0 auto;
@@ -42,7 +42,6 @@ class TodoList extends React.Component{
 
 
   render() {
-    console.log('=====',this.props)
     return (
       <Container>
       <Header>Todo List</Header>

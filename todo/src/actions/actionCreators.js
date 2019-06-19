@@ -2,7 +2,6 @@ import uuid from 'uuid';
 import { ADD_TODO, TOGGLE, DELETE_TODO } from './actinoTypes';
 
 export const addTODO = todo =>{
-    console.log(todo)
     return {// action
         type: ADD_TODO,
         payload: {
@@ -14,7 +13,6 @@ export const addTODO = todo =>{
 }
 
 export const toggleTodo = id =>{
-    console.log(id)
     return {// action
         type: TOGGLE,
         payload: id
@@ -22,8 +20,7 @@ export const toggleTodo = id =>{
 }
 
 export const deleteTodo = id => {
-    console.log(id)
-    return {
+    return {// action
         type: DELETE_TODO,
         payload: id
     }

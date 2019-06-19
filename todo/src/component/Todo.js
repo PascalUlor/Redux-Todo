@@ -5,20 +5,64 @@ const Container = styled.div`
 display: flex;
 justify-content: space-around;
 align-items: center;
+text-align: center;
 margin: 1rem auto;
 width: 30%;
 height: 3rem;
 background-color: skyblue;
 `;
 
+const Slide = styled.span`
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 100px;
+	height: 40px;
+	background: grey;
+	display: inline-block;
+	border-radius: 100px;
+    position: relative;
+
+    &:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border-radius: 100%;
+	transition: 0.3s;
+}
+    &:active:after {
+	width: 30px;
+}
+}
+
+input:checked + label {
+	background: #bada55;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+  `;
 
 
 const Todo = ({ item, select, deleteItem }) => {
-    const validation = item.completed ? { textDecoration: 'line-through' } : { fontWeight: 'bold' }
     return (
         <Container>
-    
-<p className="todo__text" onClick={() => select(item.id)} style={validation} key={item.id}>
+    <Slide onClick={() => select(item.id)}>  
+    <input type="checkbox" id={item.values} /><label for={item.values}>{item.values}</label>
+    </Slide>
+        <p className="todo__text" key={item.id}>
             {item.values}
             {item.completed}
         </p>
